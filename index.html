@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff1f7">
+  <meta name="description" content="Aqeel X Plus — video editing, thumbnail design, and practical tools for YouTube creators. Explore services and start your next project.">
+  <title>Aqeel X Plus — Make every frame matter.</title>
+
+<style>
+    /* =========================================================
+       AQEEL X PLUS — DESIGN SYSTEM
+       No frameworks, external fonts, trackers, or dependencies.
+       ========================================================= */
+
+:root {
+      color-scheme: light;
+      --bg: #fff5f9;
+      --surface: rgba(255,255,255,.65);
+      --surface-solid: #fffafd;
+      --surface-hover: rgba(255,255,255,.88);
+      --text: #292333;
+      --muted: #756979;
+      --line: rgba(115,75,103,.15);
+      --pink: #d72d7c;
+      --pink-light: #ffbedc;
+      --lavender: #d8c8ff;
+      --mint: #caf4e4;
+      --shadow: 0 18px 55px rgba(99,38,75,.075);
+      --radius: 25px;
+      --max: 1180px;
+      --nav-height: 80px;
+    }
+
+[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #17111d;
+      --surface: rgba(43,31,50,.7);
+      --surface-solid: #261b2d;
+      --surface-hover: rgba(62,43,66,.85);
+      --text: #fff0f8;
+      --muted: #c2aec5;
+      --line: rgba(255,206,236,.14);
+      --pink: #ff86bc;
+      --pink-light: #773653;
+      --lavender: #51416e;
+      --mint: #315f51;
+      --shadow: 0 18px 55px rgba(0,0,0,.2);
+    }
+
+*, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 105px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 6% 5%, #ffacd233, transparent 38%),
+        radial-gradient(ellipse at 94% 19%, #c2b1ff35, transparent 33%),
+        radial-gradient(ellipse at 43% 74%, #ffc7de29, transparent 45%);
+    }
+
+::selection { background: #f5a8cc; color: #2a1630; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    button:disabled { cursor: wait; opacity: .65; }
+    img, video { display: block; max-width: 100%; }
+    button, input, select, textarea { color: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.12; letter-spacing: -.045em; }
+    h1 { font-size: clamp(3rem, 7.7vw, 6.3rem); font-weight: 750; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.25rem); }
+    h3 { font-size: 1.22rem; }
+    p { color: var(--muted); }
+    small { font-size: .77rem; }
+    :focus-visible { outline: 3px solid var(--pink); outline-offset: 5px; }
+    [hidden] { display: none !important; }
+
+.container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 88px 0; scroll-margin-top: 20px; }
+    .muted { color: var(--muted); }
+    .accent { color: var(--pink); }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--pink);
+      text-transform: uppercase;
+      font-size: .69rem;
+      font-weight: 800;
+      letter-spacing: .17em;
+      margin-bottom: 16px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 18px var(--pink);
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 { margin-bottom: 0; }
+    .section-head > p { max-width: 345px; margin: 0; font-size: .93rem; }
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top-color: rgba(255,255,255,.75);
+      box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.35);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-radius: var(--radius);
+    }
+    .card { padding: 27px; transition: transform .3s, background .3s, box-shadow .3s; }
+    @media (hover: hover) {
+      .lift:hover {
+        transform: translateY(-6px);
+        background: var(--surface-hover);
+        box-shadow: 0 26px 55px rgba(166,68,115,.13);
+      }
+    }
+    .grid { display: grid; gap: 18px; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      padding: 11px 21px;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 650;
+      font-size: .85rem;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); background: var(--surface-hover); }
+    .btn-primary {
+      color: #fff;
+      border-color: transparent;
+      background: linear-gradient(135deg, #de397f, #bc367f);
+      box-shadow: 0 8px 25px #d72d7c25, inset 0 1px 0 #ffffff55;
+    }
+    .btn-primary:hover { background: linear-gradient(135deg, #ee4b91, #ca3f8c); }
+    .btn-dark { background: var(--text); color: var(--bg); }
+    .btn-dark:hover { background: var(--text); }
+    .icon-btn { width: 43px; height: 43px; padding: 0; border-radius: 50%; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      font-size: .71rem;
+      color: var(--muted);
+    }
+    .link { color: var(--pink); font-size: .85rem; font-weight: 700; }
+    .skip-link {
+      position: fixed;
+      left: 15px;
+      top: -100px;
+      z-index: 999;
+      padding: 12px;
+      background: var(--surface-solid);
+    }
+    .skip-link:focus { top: 10px; }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+
+/* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .nav { height: var(--nav-height); display: flex; align-items: center; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
+    .brand-mark {
+      width: 35px; height: 35px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(145deg, #f69bc8, #cf3f88);
+      color: #fff;
+      box-shadow: inset 0 1px 2px #ffffffa0, 0 5px 12px #cf3f8820;
+      font-size: 20px;
+    }
+    .brand sup { color: var(--pink); font-size: .7rem; margin-left: 2px; }
+    .nav-links { display: flex; gap: 23px; margin-left: auto; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: .8rem; font-weight: 600; }
+    .nav-links a:hover { color: var(--pink); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .menu-toggle { display: none; }
+
+/* Hero */
+    .hero { padding: 74px 0 38px; }
+    .hero-layout { display: grid; grid-template-columns: 1.06fr 1fr; gap: 50px; align-items: center; }
+    .hero h1 { margin: 22px 0; }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(100deg, #cd367e, #bd66ae 75%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-copy { font-size: 1.03rem; max-width: 450px; }
+    .hero-actions { margin-top: 27px; }
+    .hero-note { display: flex; align-items: center; gap: 8px; font-size: .75rem; margin-top: 20px; }
+    .status-dot { width: 7px; height: 7px; background: #57a78a; border-radius: 50%; }
+    .hero-art { position: relative; padding: 26px 0 35px; }
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 4% -5%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, #f5a4d259, #d5c4fc44 48%, transparent 70%);
+      filter: blur(18px);
+      z-index: -1;
+    }
+    .editor { padding: 15px; transform: rotate(-3deg); animation: float 7s ease-in-out infinite; }
+    .editor-top { display: flex; align-items: center; justify-content: space-between; padding: 1px 3px 12px; font-size: .65rem; color: var(--muted); }
+    .window-dots { display: flex; gap: 5px; }
+    .window-dots i { width: 6px; height: 6px; border-radius: 50%; background: #e8bdd1; }
+    .window-dots i:nth-child(2) { background: #e3d0a9; }
+    .window-dots i:nth-child(3) { background: #a9cabc; }
+    .artwork {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 80% 25%, #fbd8af 0, transparent 28%),
+        radial-gradient(ellipse at 23% 82%, #77224f 0, transparent 42%),
+        linear-gradient(140deg, #cf7b9e, #a99ce0 55%, #faacb0);
+      isolation: isolate;
+    }
+    .editor-canvas { height: 285px; border-radius: 15px; padding: 28px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    .artwork::before {
+      content: "";
+      width: 65%; aspect-ratio: 1;
+      position: absolute;
+      top: -23%; right: -10%;
+      border-radius: 50%;
+      border: 30px solid #ffffff24;
+      box-shadow: inset 8px 8px 25px #ffffff40, 12px 20px 45px #4a174d30;
+      z-index: -1;
+    }
+    .artwork::after {
+      content: "";
+      width: 120%; height: 70%;
+      position: absolute;
+      bottom: -37%; left: -10%;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #d95796, #452960);
+      transform: rotate(-15deg);
+      z-index: -1;
+    }
+    .canvas-label { font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; }
+    .canvas-title { font-size: 3.5rem; line-height: .96; letter-spacing: -.07em; font-weight: 800; text-shadow: 0 3px 35px #73365444; }
+    .canvas-bottom { display: flex; justify-content: space-between; font-size: .65rem; }
+    .timeline { padding: 14px 2px 4px; }
+    .timeline-meta { display: flex; justify-content: space-between; font-size: .6rem; color: var(--muted); margin-bottom: 9px; }
+    .track { height: 18px; display: flex; gap: 4px; margin-bottom: 5px; position: relative; }
+    .clip { border-radius: 4px; background: var(--pink-light); flex: 1; border: 1px solid #ffffff55; }
+    .clip:nth-child(2) { flex: 1.6; background: var(--lavender); }
+    .clip:nth-child(3) { flex: .8; }
+    .audio-track { height: 19px; background: repeating-linear-gradient(90deg, transparent 0 3px, #619b8970 3px 5px), var(--mint); border-radius: 4px; }
+    .float-tag { position: absolute; padding: 12px 16px; border-radius: 17px; display: flex; align-items: center; gap: 10px; font-size: .72rem; }
+    .float-tag strong { display: block; font-size: .83rem; }
+    .tag-one { top: 2px; right: -18px; transform: rotate(6deg); }
+    .tag-two { bottom: 12px; left: -22px; transform: rotate(3deg); }
+    .tag-symbol { width: 32px; height: 32px; display: grid; place-items: center; background: var(--pink-light); border-radius: 10px; font-size: 1rem; }
+    .specialties { display: flex; justify-content: space-between; gap: 18px; padding: 23px 5px; margin-top: 53px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .72rem; font-weight: 700; letter-spacing: .09em; color: var(--muted); text-transform: uppercase; flex-wrap: wrap; }
+
+/* About and services */
+    .about-layout { display: grid; grid-template-columns: .85fr 1.2fr; gap: 45px; align-items: center; }
+    .portrait { min-height: 350px; display: grid; place-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--pink-light), var(--lavender)); }
+    .portrait-monogram { font-size: 8.5rem; font-weight: 900; letter-spacing: -.12em; color: #fff9; text-shadow: 0 12px 40px #8c38713d; transform: rotate(-9deg); }
+    .portrait-caption { position: absolute; bottom: 20px; left: 20px; right: 20px; padding: 14px 18px; border-radius: 16px; }
+    .portrait-caption strong { display: block; }
+    .skills { margin-top: 22px; }
+    .service-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 14px; background: var(--pink-light); margin-bottom: 22px; font-size: 1.15rem; }
+    .service-card:nth-child(3n+2) .service-icon { background: var(--lavender); }
+    .service-card:nth-child(3n+3) .service-icon { background: var(--mint); }
+    .service-card p { font-size: .87rem; margin-bottom: 18px; }
+
+/* Portfolio */
+    .filters { margin-bottom: 25px; }
+    .filter { font-size: .76rem; min-height: 39px; padding: 8px 17px; }
+    .filter[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+    .project { overflow: hidden; }
+    .project-cover { width: 100%; padding: 0; border: 0; display: block; position: relative; text-align: left; background: transparent; }
+    .project-art { aspect-ratio: 16/10; display: flex; align-items: end; padding: 26px; color: #fff; }
+    .project-art strong { font-size: clamp(2rem, 3.6vw, 3rem); line-height: .95; letter-spacing: -.065em; max-width: 85%; }
+    .project-art.variant-1 { background: linear-gradient(130deg, #375757, #8eaaa6 55%, #edc9ab); }
+    .project-art.variant-2 { background: linear-gradient(130deg, #5b3b9a, #b260b6 60%, #f4b36c); }
+    .project-art.variant-3 { background: linear-gradient(135deg, #1d3d56, #437b9d, #debb9b); }
+    .project-badge { position: absolute; top: 14px; left: 14px; background: #201a3985; color: #fff; border-color: #ffffff33; backdrop-filter: blur(10px); }
+    .play { position: absolute; right: 17px; bottom: 17px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #ffffffbb; color: #593450; box-shadow: 0 3px 20px #0001; }
+    .project-info { padding: 22px; }
+    .project-info h3 { margin: 8px 0; }
+    .project-info p { font-size: .82rem; margin: 0; }
+
+/* Toolkit and guides */
+    .toolkit-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 20px; }
+    .tool-menu { display: flex; flex-direction: column; gap: 8px; }
+    .tool-tab { text-align: left; border-radius: 14px; border: 1px solid transparent; background: transparent; padding: 14px 17px; font-weight: 600; font-size: .87rem; }
+    .tool-tab[aria-pressed="true"] { background: var(--surface); border-color: var(--line); color: var(--pink); box-shadow: var(--shadow); }
+    .tool-panel { padding: 30px; }
+    .tool-panel h3 { margin-bottom: 7px; }
+    .tool-output { white-space: pre-wrap; overflow-wrap: anywhere; padding: 20px; margin: 18px 0; border-radius: 16px; border: 1px dashed var(--line); background: var(--bg); font-size: .86rem; color: var(--text); line-height: 1.8; }
+    .resource-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 24px; }
+    .resource { padding: 18px; }
+    .resource strong { font-size: .82rem; display: block; margin-bottom: 7px; }
+    .resource p { font-size: .76rem; margin: 0; }
+    .guide-number { font-size: .72rem; color: var(--pink); margin-bottom: 30px; display: block; }
+    .guide-card p { font-size: .86rem; }
+    details { border-top: 1px solid var(--line); padding: 18px 0; }
+    summary { cursor: pointer; font-weight: 650; font-size: .92rem; }
+    details p { margin-top: 12px; margin-bottom: 0; font-size: .85rem; }
+    .notice { padding: 14px 17px; border: 1px solid var(--line); background: var(--bg); border-radius: 14px; font-size: .8rem; color: var(--muted); margin: 16px 0; }
+
+/* Pricing and reviews */
+    .price-card { position: relative; padding: 32px; display: flex; flex-direction: column; }
+    .price-card.featured { border-color: var(--pink); background: linear-gradient(150deg, var(--surface), #ef9bc31a); }
+    .price-label { position: absolute; top: -13px; left: 26px; padding: 4px 12px; border-radius: 50px; color: #fff; background: #c73980; font-size: .66rem; font-weight: 700; }
+    .price { font-size: 1.8rem; letter-spacing: -.05em; font-weight: 750; margin: 8px 0 3px; }
+    .price-card > p { font-size: .83rem; }
+    .feature-list { padding: 0; margin: 20px 0 28px; list-style: none; flex: 1; }
+    .feature-list li { font-size: .83rem; margin-bottom: 11px; display: flex; gap: 10px; }
+    .feature-list li::before { content: "✓"; color: var(--pink); }
+    .review-quote { font-size: 2.5rem; color: var(--pink); line-height: 1; }
+    .review p { font-size: .87rem; }
+    .review strong { font-size: .8rem; }
+    .faq-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 65px; }
+
+/* Forms */
+    label { display: block; font-size: .78rem; font-weight: 650; margin-bottom: 7px; }
+    input, textarea, select {
+      width: 100%;
+      min-height: 47px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--surface);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--pink); box-shadow: 0 0 0 3px #e95b9f14; }
+    input::placeholder, textarea::placeholder { color: var(--muted); opacity: .75; }
+    textarea { resize: vertical; min-height: 125px; }
+    .field { margin-bottom: 18px; }
+    .check-label { display: flex; gap: 10px; align-items: start; font-weight: 400; color: var(--muted); }
+    input[type="checkbox"] { width: 17px; min-height: 17px; margin-top: 4px; accent-color: var(--pink); flex-shrink: 0; }
+    .hire-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 40px; align-items: start; }
+    .hire-copy { position: sticky; top: 115px; }
+    .process-step { display: flex; gap: 15px; margin-top: 25px; }
+    .process-step span { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line); font-size: .72rem; flex-shrink: 0; }
+    .process-step strong { font-size: .86rem; }
+    .process-step p { font-size: .8rem; margin: 3px 0 0; }
+    .form-footer { display: flex; align-items: center; gap: 17px; flex-wrap: wrap; }
+    .form-status { font-size: .78rem; margin: 14px 0 0; }
+    .contact-box { text-align: center; padding: 58px 25px; background: linear-gradient(125deg, var(--surface), #efadd72b, var(--surface)); }
+    .contact-box p { max-width: 490px; margin-inline: auto; }
+    .contact-box .row { justify-content: center; }
+    .contact-details { margin-top: 22px; font-size: .85rem; overflow-wrap: anywhere; }
+    footer { border-top: 1px solid var(--line); padding: 32px 0; }
+    .footer-top { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 12px 23px; flex-wrap: wrap; max-width: 700px; }
+    .footer-links a { font-size: .76rem; color: var(--muted); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 25px; color: var(--muted); font-size: .71rem; }
+
+/* Dialogs, feedback, animations */
+    dialog {
+      width: min(700px, calc(100% - 30px));
+      max-height: 85dvh;
+      overflow-y: auto;
+      border: 1px solid var(--line);
+      border-radius: 25px;
+      background: var(--surface-solid);
+      color: var(--text);
+      padding: 28px;
+      box-shadow: 0 30px 100px #0003;
+    }
+    dialog::backdrop { background: #28142966; backdrop-filter: blur(7px); }
+    .dialog-head { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .dialog-head h3 { margin: 0; }
+    .dialog-media { margin-bottom: 20px; border-radius: 16px; overflow: hidden; }
+    .dialog-media video { width: 100%; max-height: 55vh; background: #17111d; }
+    .search-results { display: grid; gap: 8px; margin-top: 18px; }
+    .search-result { display: block; padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; font-size: .88rem; }
+    .search-result:hover { background: var(--bg); }
+    .compare { position: relative; aspect-ratio: 16/10; overflow: hidden; border-radius: 16px; }
+    .compare .project-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .compare-before { filter: grayscale(.85) brightness(.78); clip-path: inset(0 50% 0 0); z-index: 1; }
+    .compare-labels { position: absolute; inset: 12px 12px auto; display: flex; justify-content: space-between; z-index: 2; }
+    .compare-labels span { color: #fff; background: #201a3985; padding: 3px 9px; border-radius: 30px; font-size: .65rem; }
+    input[type="range"] { padding: 0; accent-color: var(--pink); }
+    .toast-stack { position: fixed; bottom: 22px; right: 22px; z-index: 150; display: grid; gap: 10px; pointer-events: none; }
+    .toast { max-width: min(350px, calc(100vw - 44px)); padding: 13px 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-solid); box-shadow: var(--shadow); font-size: .81rem; animation: toast-in .3s ease both; }
+    .water-ripple {
+      position: fixed;
+      pointer-events: none;
+      border-radius: 50%;
+      border: 1px solid #e970aa90;
+      box-shadow: inset 0 0 12px #ffffff99, 0 0 13px #ec88b930;
+      background: radial-gradient(circle, transparent 50%, #ffc4e033 70%, transparent 75%);
+      width: 25px; height: 25px;
+      transform: translate(-50%,-50%);
+      z-index: 9999;
+      animation: ripple .85s ease-out forwards;
+    }
+    .water-ripple::after { content: ""; position: absolute; inset: 5px; border: 1px solid #e970aa50; border-radius: inherit; }
+    .reveal { opacity: 1; transform: none; }
+    .motion .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s, transform .65s; }
+    .motion .reveal.visible { opacity: 1; transform: none; }
+    .loading .btn-label::after { content: ""; display: inline-block; width: 12px; height: 12px; border: 2px solid #fff6; border-top-color: #fff; border-radius: 50%; margin-left: 10px; animation: spin .7s linear infinite; }
+
+@keyframes float { 0%,100% { transform: rotate(-3deg) translateY(0); } 50% { transform: rotate(-2deg) translateY(-9px); } }
+    @keyframes ripple { to { width: 150px; height: 150px; opacity: 0; } }
+    @keyframes toast-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1050px) {
+      .nav { gap: 16px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .74rem; }
+      .hero-layout { gap: 28px; }
+      .resource-grid { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 850px) {
+      :root { --nav-height: 70px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-actions { margin-left: auto; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 70px; left: 0; right: 0;
+        background: var(--surface-solid);
+        border-bottom: 1px solid var(--line);
+        padding: 20px;
+        max-height: calc(100dvh - 70px);
+        overflow-y: auto;
+        grid-template-columns: 1fr 1fr;
+      }
+      .nav-links.open { display: grid; }
+      .nav-links a { padding: 9px; font-size: .85rem; }
+      .hero-layout, .about-layout, .hire-layout, .faq-layout { grid-template-columns: 1fr; }
+      .hero { padding-top: 45px; }
+      .hero-copy { max-width: 550px; }
+      .hero-art { max-width: 540px; width: 90%; margin: 10px auto 0; }
+      .hero h1 { max-width: 650px; }
+      .about-layout { gap: 30px; }
+      .portrait { min-height: 300px; }
+      .grid-3 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .price-card:last-child { grid-column: 1 / -1; }
+      .hire-copy { position: static; }
+      .faq-layout { gap: 25px; }
+      .toolkit-layout { grid-template-columns: 1fr; }
+      .tool-menu { flex-direction: row; flex-wrap: wrap; }
+      .tool-tab { flex: 1 1 140px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: calc(100% - 32px); }
+      .section { padding: 58px 0; }
+      .section-head { display: block; }
+      .section-head > p { margin-top: 18px; }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .resource-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .nav-hire { display: none; }
+      .nav { gap: 10px; }
+      .brand { font-size: .92rem; }
+      .brand-mark { width: 31px; height: 31px; }
+      .nav-actions { gap: 5px; }
+      .icon-btn { width: 37px; height: 37px; }
+      .hero h1 { font-size: clamp(2.8rem, 12.5vw, 4.2rem); }
+      .editor-canvas { height: 235px; padding: 20px; }
+      .canvas-title { font-size: 2.8rem; }
+      .float-tag { padding: 9px 11px; font-size: .62rem; }
+      .tag-one { right: -12px; }
+      .tag-two { left: -12px; }
+      .specialties { justify-content: center; font-size: .62rem; gap: 13px 21px; margin-top: 27px; }
+      .tool-panel, .card { padding: 22px; }
+      .price-card { padding: 29px; }
+      .project-art strong { font-size: 2.8rem; }
+      .form-footer .btn { width: 100%; }
+      .contact-box { padding: 38px 20px; }
+      dialog { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .motion .reveal { opacity: 1; transform: none; }
+      .water-ripple { display: none; }
+    }
+  </style>
+
+<script>
+    /* Apply saved theme before paint. Storage can be blocked in private modes. */
+    try {
+      const savedTheme = localStorage.getItem("aqeel-theme");
+      if (savedTheme === "dark" || savedTheme === "light") {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch {}
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Aqeel X Plus home">
+        <span class="brand-mark" aria-hidden="true">a✦</span>
+        Aqeel X<sup>PLUS</sup>
+      </a>
+
+<nav class="nav-links" id="navigation" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Work</a>
+        <a href="#toolkit">Creator toolkit</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+<div class="nav-actions">
+        <button class="btn icon-btn" id="search-open" aria-label="Search website">⌕</button>
+        <button class="btn icon-btn" id="theme-toggle" aria-label="Switch to dark mode">☾</button>
+        <a class="btn btn-primary nav-hire" href="#hire">Let’s talk ↗</a>
+        <button class="btn icon-btn menu-toggle" id="menu-toggle"
+          aria-label="Toggle navigation" aria-expanded="false" aria-controls="navigation">☰</button>
+      </div>
+    </div>
+  </header>
+
+<main id="main">
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="reveal">
+            <span class="pill">✦ Video editor. Creator. Creative partner.</span>
+            <h1>Good footage.<br><em>Unforgettable</em><br>stories.</h1>
+            <p class="hero-copy">
+              Thoughtful edits, scroll-stopping visuals, and a little extra magic.
+              Let’s turn your next idea into something worth watching.
+            </p>
+            <div class="row hero-actions">
+              <a href="#hire" class="btn btn-primary">Start a project ↗</a>
+              <a href="#portfolio" class="btn">Explore the work <span aria-hidden="true">▷</span></a>
+            </div>
+            <p class="hero-note"><span class="status-dot"></span>Made for creators who care about the details.</p>
+          </div>
+
+<div class="hero-art reveal" role="img" aria-label="Illustrative video-editing workspace with pink cinematic artwork and a multitrack timeline">
+            <div class="editor glass">
+              <div class="editor-top">
+                <span class="window-dots"><i></i><i></i><i></i></span>
+                <span>the next great story.mp4</span>
+                <span>✦</span>
+              </div>
+              <div class="editor-canvas artwork">
+                <span class="canvas-label">Aqeel X Plus / Creative concept</span>
+                <div class="canvas-title">Not just edited.<br>Felt.</div>
+                <div class="canvas-bottom"><span>STORY FIRST.</span><span>▶ 00:24 / 01:00</span></div>
+              </div>
+              <div class="timeline">
+                <div class="timeline-meta"><span>01 — THE STORY</span><span>VIDEO · COLOR · SOUND</span></div>
+                <div class="track"><span class="clip"></span><span class="clip"></span><span class="clip"></span></div>
+                <div class="track"><span class="clip"></span><span class="clip"></span></div>
+                <div class="audio-track"></div>
+              </div>
+            </div>
+            <div class="float-tag tag-one glass">
+              <span class="tag-symbol">✦</span>
+              <div><strong>A little more cinematic.</strong><span class="muted">Every frame, considered.</span></div>
+            </div>
+            <div class="float-tag tag-two glass">
+              <span class="tag-symbol">↗</span>
+              <div><strong>Your vision. Refined.</strong><span class="muted">From raw clips to a real story.</span></div>
+            </div>
+          </div>
+        </div>
+
+<div class="specialties">
+          <span>YouTube storytelling</span><span>Short-form magic</span>
+          <span>Cinematic color</span><span>Sound that connects</span>
+          <span>Thumbnails that speak</span>
+        </div>
+      </div>
+    </section>
+
+<section id="about" class="section">
+      <div class="container about-layout">
+        <div class="portrait glass reveal">
+          <span class="portrait-monogram" aria-hidden="true">AX+</span>
+          <div class="portrait-caption glass">
+            <strong>Aqeel X Plus</strong>
+            <small class="muted">The creative mind behind your next edit.</small>
+          </div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">A person behind the pixels</span>
+          <h2>Hey, I’m Aqeel.<br>Your story comes first.</h2>
+          <p id="about-copy"></p>
+          <p>
+            My approach connects editing with the bigger creator journey:
+            a clear idea, an honest title, a strong thumbnail, and an opening that
+            delivers on the promise. Creative decisions should serve the story—not distract from it.
+          </p>
+          <div class="row skills">
+            <span class="pill">Story-led editing</span>
+            <span class="pill">YouTube knowledge</span>
+            <span class="pill">Visual creativity</span>
+            <span class="pill">Creator collaboration</span>
+          </div>
+          <div class="row" style="margin-top:25px">
+            <a class="link" href="#portfolio">Get to know the work ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="services" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Video editing services</span><h2>From first cut<br>to final <span class="accent">wow.</span></h2></div>
+          <p>A flexible creative toolkit for your channel, your brand, and your next big idea.</p>
+        </div>
+        <div class="grid grid-3" id="services-grid"></div>
+      </div>
+    </section>
+
+<section id="portfolio" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Portfolio / creative directions</span><h2>A little less ordinary.</h2></div>
+          <p>Explore visual concepts and editing directions. Demo artwork below is not presented as completed client work.</p>
+        </div>
+        <div class="row filters" role="group" aria-label="Filter portfolio">
+          <button class="btn filter" data-filter="all" aria-pressed="true">All projects</button>
+          <button class="btn filter" data-filter="video" aria-pressed="false">Video edits</button>
+          <button class="btn filter" data-filter="thumbnail" aria-pressed="false">Thumbnails</button>
+          <button class="btn filter" data-filter="comparison" aria-pressed="false">Before / after</button>
+        </div>
+        <div class="grid grid-3" id="portfolio-grid"></div>
+      </div>
+    </section>
+
+<section id="toolkit" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">YouTube creator toolkit</span><h2>Big ideas.<br>A smarter starting point.</h2></div>
+          <p>Lightweight, local tools to help shape your next upload. No sign-in. No paid API. No made-up keyword scores.</p>
+        </div>
+
+<div class="toolkit-layout">
+          <div class="tool-menu" role="group" aria-label="Choose creator tool">
+            <button class="tool-tab" data-tool="titles" aria-pressed="true">01 &nbsp; Title idea studio ↗</button>
+            <button class="tool-tab" data-tool="description" aria-pressed="false">02 &nbsp; Description builder ↗</button>
+            <button class="tool-tab" data-tool="keywords" aria-pressed="false">03 &nbsp; Keywords & hashtags ↗</button>
+            <button class="tool-tab" data-tool="ideas" aria-pressed="false">04 &nbsp; Content idea lab ↗</button>
+            <button class="tool-tab" data-tool="checklist" aria-pressed="false">05 &nbsp; Upload checklist ↗</button>
+          </div>
+
+<div class="glass tool-panel reveal">
+            <h3 id="tool-title">Title idea studio</h3>
+            <p id="tool-description" class="muted">Turn a topic into five editable title directions.</p>
+            <form id="creator-form">
+              <div class="field">
+                <label for="creator-topic">Your video topic</label>
+                <input id="creator-topic" name="topic" required maxlength="120"
+                  placeholder="e.g. Editing cinematic videos on your phone">
+              </div>
+              <div class="field">
+                <label for="creator-audience">Who is it for?</label>
+                <input id="creator-audience" name="audience" maxlength="80"
+                  placeholder="e.g. New YouTube creators">
+              </div>
+              <button class="btn btn-primary" type="submit">Create a starting point ✦</button>
+            </form>
+            <div class="tool-output" id="creator-output" role="status" aria-live="polite">Your next idea starts here. Add a topic above.</div>
+            <div class="row">
+              <button type="button" class="btn" id="copy-output">Copy result</button>
+              <small class="muted">Template-generated, not AI or live SEO data.</small>
+            </div>
+          </div>
+        </div>
+        <div class="resource-grid" id="resource-grid"></div>
+      </div>
+    </section>
+
+<section id="seo" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">YouTube SEO guides</span><h2>Make the promise.<br>Then deliver it.</h2></div>
+          <p>Practical editorial checklists—not ranking guarantees or shortcuts.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="glass card guide-card lift reveal">
+            <span class="guide-number">GUIDE 01 / BEFORE YOU FILM</span>
+            <h3>Start with one clear viewer question.</h3>
+            <p>Define who the video helps, what it answers, and what makes your explanation worth watching.</p>
+            <details>
+              <summary>Open the planning checklist</summary>
+              <p>Write the viewer’s question in one sentence. Sketch the opening. Choose a relevant phrase naturally. Plan examples that actually support your title.</p>
+            </details>
+          </article>
+          <article class="glass card guide-card lift reveal">
+            <span class="guide-number">GUIDE 02 / PACKAGE THE STORY</span>
+            <h3>A title and thumbnail that work together.</h3>
+            <p>Give viewers an understandable reason to click without promising something the video cannot deliver.</p>
+            <details>
+              <summary>Open the packaging checklist</summary>
+              <p>Make the subject clear. Keep thumbnail text readable at small sizes. Avoid repeating the full title on the image. Check that both accurately represent the video.</p>
+            </details>
+          </article>
+          <article class="glass card guide-card lift reveal">
+            <span class="guide-number">GUIDE 03 / AFTER YOU UPLOAD</span>
+            <h3>Learn from the viewing experience.</h3>
+            <p>Review your own channel data in context and use it to form a testable idea for your next upload.</p>
+            <details>
+              <summary>Open the review checklist</summary>
+              <p>Compare similar formats and time windows. Note confusing moments, early exits, and useful comments. Change one creative variable at a time when practical.</p>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<section id="youtube-tools" class="section">
+      <div class="container grid grid-2">
+        <div class="reveal">
+          <span class="eyebrow">YouTube tools / responsible by design</span>
+          <h2>Your content.<br>The official route.</h2>
+          <p>
+            Validate a YouTube video link and open the video or YouTube Studio.
+            For your own uploads, use download options available through your
+            account. For authorized third-party material, ask the owner for an
+            original file or an expressly permitted download.
+          </p>
+          <div class="notice">
+            This tool does not extract streams, bypass restrictions, or download
+            videos. Permission alone does not override platform terms. Use only
+            methods permitted by YouTube and applicable copyright rules.
+          </div>
+        </div>
+
+<div class="glass card reveal">
+          <h3>Authorized-content URL helper</h3>
+          <form id="youtube-form">
+            <div class="field">
+              <label for="youtube-url">YouTube video URL</label>
+              <input type="url" id="youtube-url" required
+                placeholder="https://www.youtube.com/watch?v=..."
+                aria-describedby="youtube-help">
+              <small id="youtube-help" class="muted">Supports watch links, Shorts, live links, and youtu.be links.</small>
+            </div>
+            <div class="field">
+              <label class="check-label">
+                <input type="checkbox" required>
+                <span>I own this content or have permission to use it, and will use only permitted access or download methods.</span>
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit">Validate link ↗</button>
+          </form>
+          <div id="youtube-result" hidden>
+            <p class="notice">The URL format is valid. Ownership, availability, and download eligibility have not been verified.</p>
+            <div class="row">
+              <a class="btn" id="validated-video" target="_blank" rel="noopener noreferrer">Open video ↗</a>
+              <a class="btn" href="https://studio.youtube.com/" target="_blank" rel="noopener noreferrer">Open YouTube Studio ↗</a>
+            </div>
+          </div>
+          <p class="form-status" id="youtube-status" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+<section id="pricing" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Simple packages</span><h2>The right fit.<br>Not a one-size-fits-all edit.</h2></div>
+          <p>Choose a starting point. Final scope, price, revisions, and delivery dates are agreed before work begins.</p>
+        </div>
+        <div class="grid grid-3" id="pricing-grid"></div>
+      </div>
+    </section>
+
+<section id="reviews" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">Client reviews</span><h2>Real voices only.</h2></div>
+          <p>No invented ratings or borrowed praise. Approved client feedback belongs here.</p>
+        </div>
+        <div id="reviews-grid" class="grid grid-3"></div>
+      </div>
+    </section>
+
+<section id="faq" class="section">
+      <div class="container faq-layout">
+        <div class="reveal">
+          <span class="eyebrow">A few good questions</span>
+          <h2>Before we<br>press play.</h2>
+          <p>Still curious about something?</p>
+          <a href="#contact" class="link">Let’s talk it through ↗</a>
+        </div>
+        <div class="glass card reveal" id="faq-list"></div>
+      </div>
+    </section>
+
+<section id="hire" class="section">
+      <div class="container hire-layout">
+        <div class="hire-copy reveal">
+          <span class="eyebrow">Hire Aqeel X Plus</span>
+          <h2>Your next great video<br>starts with <span class="accent">hello.</span></h2>
+          <p>Tell me what you’re making. Share the idea, the footage, and the feeling you’re going for.</p>
+          <div class="process-step">
+            <span>01</span><div><strong>Share your brief</strong><p>A few useful details are better than a perfect pitch.</p></div>
+          </div>
+          <div class="process-step">
+            <span>02</span><div><strong>Align on the details</strong><p>We discuss scope, budget, timing, and deliverables.</p></div>
+          </div>
+          <div class="process-step">
+            <span>03</span><div><strong>Bring the story to life</strong><p>Editing begins after the project terms are agreed.</p></div>
+          </div>
+        </div>
+
+<form id="hire-form" class="glass card reveal">
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="client-name">Your name *</label>
+              <input id="client-name" name="name" autocomplete="name" required maxlength="100" placeholder="What should I call you?">
+            </div>
+            <div class="field">
+              <label for="client-email">Email address *</label>
+              <input type="email" id="client-email" name="email" autocomplete="email" required maxlength="160" placeholder="you@example.com">
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="client-phone">Phone / WhatsApp</label>
+              <input type="tel" id="client-phone" name="phone" autocomplete="tel" maxlength="25" placeholder="+91 your number">
+            </div>
+            <div class="field">
+              <label for="client-service">Required service *</label>
+              <select id="client-service" name="service" required>
+                <option value="">Select a service</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="client-details">Project details *</label>
+            <textarea id="client-details" name="details" required minlength="20" maxlength="3000"
+              placeholder="Tell me about your video, audience, raw footage, desired length, and style."></textarea>
+          </div>
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="client-budget">Budget and currency</label>
+              <input id="client-budget" name="budget" maxlength="80" placeholder="e.g. ₹5,000–₹10,000, or discuss">
+            </div>
+            <div class="field">
+              <label for="client-deadline">Preferred deadline</label>
+              <input type="date" id="client-deadline" name="deadline">
+            </div>
+          </div>
+          <div class="field">
+            <label for="client-link">Footage / file / reference link</label>
+            <input type="url" id="client-link" name="link" maxlength="1500" placeholder="https://drive.google.com/...">
+            <small class="muted">Share a file link with appropriate access. Direct file uploads are not enabled.</small>
+          </div>
+          <div class="field">
+            <label class="check-label">
+              <input name="consent" type="checkbox" required>
+              <span>I agree to share these details with Aqeel X Plus for a response about this project. Please do not include passwords or sensitive documents.</span>
+            </label>
+          </div>
+          <div class="form-footer">
+            <button class="btn btn-primary" type="submit" id="hire-submit"><span class="btn-label">Prepare enquiry ↗</span></button>
+            <small id="form-method" class="muted">Opens your email app. You review and send.</small>
+          </div>
+          <p class="form-status" id="hire-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+<section id="contact" class="section">
+      <div class="container">
+        <div class="glass contact-box reveal">
+          <span class="eyebrow" style="justify-content:center">Let’s make something meaningful</span>
+          <h2>One conversation.<br>So many possibilities.</h2>
+          <p>Have a brief, a question, or a wonderfully unfinished idea? There’s a place to start.</p>
+          <div class="row">
+            <a class="btn btn-primary" data-contact="whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+            <a class="btn" data-contact="email">Email me ↗</a>
+            <a class="btn" data-contact="phone">Call me ↗</a>
+          </div>
+          <div class="contact-details">
+            <a data-contact="email" id="contact-email"></a>
+            <br>
+            <a data-contact="phone" id="contact-phone"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+<footer>
+    <div class="container">
+      <div class="footer-top">
+        <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">a✦</span>Aqeel X<sup>PLUS</sup></a>
+        <nav class="footer-links" aria-label="All website sections" id="footer-links"></nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Aqeel X Plus. All rights reserved.</span>
+        <span>Independent creator website. Not affiliated with YouTube or Google.</span>
+        <a href="#home">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+<dialog id="search-dialog" aria-labelledby="search-title">
+    <div class="dialog-head">
+      <h3 id="search-title">Find your next step.</h3>
+      <button class="btn icon-btn" data-close="search-dialog" aria-label="Close search">×</button>
+    </div>
+    <label for="site-search">Search sections, services, and tools</label>
+    <input id="site-search" type="search" placeholder="Try thumbnails, pricing, or SEO…" autocomplete="off">
+    <div class="search-results" id="search-results" aria-live="polite"></div>
+  </dialog>
+
+<dialog id="project-dialog" aria-labelledby="project-title">
+    <div class="dialog-head">
+      <h3 id="project-title">Project details</h3>
+      <button class="btn icon-btn" data-close="project-dialog" aria-label="Close project">×</button>
+    </div>
+    <div id="project-detail"></div>
+  </dialog>
+
+<div class="toast-stack" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+<noscript>
+    <p style="padding:24px;text-align:center">
+      Enable JavaScript for the portfolio, creator tools, and enquiry form.
+      You can also email technobonusofficial@gmail.com or call 7561012501.
+    </p>
+  </noscript>
+
+<script>
+    "use strict";
+
+/* =========================================================
+       EDITABLE SITE CONTENT
+
+Portfolio:
+       - Supply your own licensed images and direct video files.
+       - videoUrl should point to an MP4/WebM, not a YouTube page.
+       - Set demo:false only for real work you may publicly show.
+
+Backend:
+       - Leave formEndpoint blank to open an email draft.
+       - Or provide your own HTTPS endpoint accepting JSON.
+       - It must validate and store/deliver the enquiry server-side.
+       - Return {"ok":true} ONLY after successful processing.
+       - Add server-side rate limiting, spam protection, origin
+         checks, size limits, and appropriate privacy disclosures.
+       - Never put API secrets in this public file.
+       ========================================================= */
+
+const SITE = {
+      name: "Aqeel X Plus",
+      phone: "7561012501",
+      countryCode: "91", // Assumes India. Edit if necessary.
+      email: "technobonusofficial@gmail.com",
+      formEndpoint: "",
+
+about:
+        "I’m the creator behind Aqeel X Plus, bringing together video editing, " +
+        "visual storytelling, and an understanding of the YouTube creator workflow. " +
+        "From long-form structure to short-form pacing, my focus is on making " +
+        "your ideas clear, engaging, and recognizably yours.",
+
+services: [
+        { icon: "▷", title: "YouTube video editing", description: "Story structure, purposeful pacing, B-roll, captions, and a polished finish for your long-form videos." },
+        { icon: "↟", title: "Shorts / Reels editing", description: "Vertical-first edits with strong openings, readable captions, and rhythm that suits your content." },
+        { icon: "◈", title: "Cinematic editing", description: "A considered blend of visuals, pacing, atmosphere, and sound to bring a more cinematic feel." },
+        { icon: "◐", title: "Color grading", description: "Exposure and color balancing, shot matching, and a cohesive look that supports your story." },
+        { icon: "⇄", title: "Transitions", description: "Clean movement between moments—from invisible cuts to stylized transitions with a purpose." },
+        { icon: "✦", title: "Visual effects", description: "Creative compositing, screen treatments, and visual accents scoped to your project." },
+        { icon: "▧", title: "Thumbnail design", description: "Clear visual hierarchy, expressive composition, and mobile-readable designs for your videos." },
+        { icon: "⌁", title: "Intro / outro creation", description: "Brand-aligned openings and endings that feel like a natural part of your channel." },
+        { icon: "≋", title: "Audio editing", description: "Dialogue cleanup, balanced levels, music placement, and sound design for a more cohesive edit." }
+      ],
+
+portfolio: [
+        {
+          title: "The everyday, reimagined",
+          category: "video",
+          tag: "Cinematic direction",
+          headline: "Find your ordinary magic.",
+          description: "A visual direction for a story-led lifestyle edit.",
+          details: "Concept scope: a narrative opening, motivated cuts, atmospheric sound, and a soft cinematic grade. Add your actual film, credits, and agreed project details here.",
+          deliverables: "Story edit · Color treatment · Sound design",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        },
+        {
+          title: "A little louder",
+          category: "thumbnail",
+          tag: "Thumbnail direction",
+          headline: "SMALL IDEA. BIG ENERGY.",
+          description: "Bold typography and a clear visual focal point.",
+          details: "Concept scope: a thumbnail system with contrast, generous type, and a focused message. Replace the illustration with an approved thumbnail and the associated video context.",
+          deliverables: "Thumbnail concept · Typography · Layout",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        },
+        {
+          title: "A different atmosphere",
+          category: "comparison",
+          tag: "Before / after demo",
+          headline: "Same scene. New feeling.",
+          description: "An interactive illustration of a color-treatment direction.",
+          details: "This slider compares two CSS treatments of the same illustrative artwork—not actual client footage. Replace with a real matched before/after pair when available.",
+          deliverables: "Illustrative color comparison",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        },
+        {
+          title: "Built for the small screen",
+          category: "video",
+          tag: "Short-form direction",
+          headline: "Pause. Watch. Feel.",
+          description: "A punchy creative direction for vertical storytelling.",
+          details: "Concept scope: a clear opening, concise captions, beat-aware editing, and a clean closing moment. Upload a real preview to enable playback.",
+          deliverables: "Vertical edit · Captions · Audio balance",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        },
+        {
+          title: "The creator’s desk",
+          category: "thumbnail",
+          tag: "Educational thumbnail",
+          headline: "YOUR NEXT BIG IDEA.",
+          description: "An editorial-style concept for an educational channel.",
+          details: "Concept scope: a repeatable design system that balances useful information with a strong, recognizable visual identity.",
+          deliverables: "Thumbnail concept · Layout system",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        },
+        {
+          title: "Stories in motion",
+          category: "video",
+          tag: "YouTube direction",
+          headline: "Make every frame matter.",
+          description: "A thoughtful long-form storytelling direction.",
+          details: "Concept scope: narrative organization, B-roll placement, restrained motion graphics, and a balanced final mix. Add a real project and its authorized media before presenting it as completed work.",
+          deliverables: "Long-form edit · B-roll · Motion accents",
+          imageUrl: "",
+          videoUrl: "",
+          demo: true
+        }
+      ],
+
+packages: [
+        {
+          name: "Basic",
+          price: "Request a quote", // Example edit: "From ₹2,500"
+          note: "For a focused, straightforward edit.",
+          features: ["Clean cuts and pacing", "Basic audio balance", "Simple titles", "Scope and revisions agreed upfront"],
+          featured: false
+        },
+        {
+          name: "Standard",
+          price: "Request a quote",
+          note: "For a more complete creator package.",
+          features: ["Story-led editing", "Color correction", "Captions and transitions", "Thumbnail option", "Scope and revisions agreed upfront"],
+          featured: true
+        },
+        {
+          name: "Premium",
+          price: "Request a quote",
+          note: "For a more involved creative production.",
+          features: ["Advanced editing direction", "Creative color treatment", "Motion and visual effects", "Detailed sound design", "Custom deliverables and schedule"],
+          featured: false
+        }
+      ],
+
+// Only add genuine feedback with permission.
+      // Example schema: { quote: "...", name: "...", role: "..." }
+      reviews: [],
+
+faqs: [
+        {
+          q: "How do I start a project?",
+          a: "Send a brief through the Hire Me form or contact Aqeel directly. Include the type of video, source footage, desired length, style references, budget, and preferred deadline."
+        },
+        {
+          q: "What determines the price?",
+          a: "Pricing depends on footage volume, final length, complexity, graphics, audio work, revisions, and turnaround. A written scope and quote should be agreed before editing starts."
+        },
+        {
+          q: "How long does an edit take?",
+          a: "Turnaround is confirmed after reviewing the brief and footage. The date you enter is a preference, not a guaranteed booking."
+        },
+        {
+          q: "Can I ask for revisions?",
+          a: "Yes—revision rounds and what they cover are agreed in the project scope. Major changes to the brief may require an updated quote."
+        },
+        {
+          q: "How do I share large files?",
+          a: "Use a file-sharing service and include the link in your enquiry. Confirm the appropriate access permissions. Avoid making confidential footage publicly accessible."
+        },
+        {
+          q: "Do the tools guarantee views or rankings?",
+          a: "No. The tools generate editable planning templates. They do not access live search volumes, predict revenue, or guarantee channel growth."
+        },
+        {
+          q: "Can the YouTube URL tool download any video?",
+          a: "No. It validates links and points you to official access options. It does not download, extract streams, bypass restrictions, or verify ownership."
+        },
+        {
+          q: "Does submitting the form book a project?",
+          a: "No. An enquiry is the start of a conversation, not a contract or booking. With the default configuration, the form opens an email draft that you must review and send."
+        }
+      ]
+    };
+
+const SECTIONS = [
+      ["home", "Home"],
+      ["about", "About Me"],
+      ["services", "Video Editing Services"],
+      ["portfolio", "Portfolio"],
+      ["toolkit", "YouTube Creator Toolkit"],
+      ["seo", "YouTube SEO Guides"],
+      ["youtube-tools", "YouTube Tools"],
+      ["pricing", "Pricing"],
+      ["reviews", "Client Reviews"],
+      ["faq", "FAQ"],
+      ["hire", "Hire Me"],
+      ["contact", "Contact"]
+    ];
+
+const RESOURCES = [
+      ["YouTube SEO", "Align your topic, title, and description with the actual content."],
+      ["Title ideas", "Explore clear, honest angles around a single viewer promise."],
+      ["Descriptions", "Add a useful summary, verified links, and relevant context."],
+      ["Keywords", "Brainstorm relevant wording without pretending it is live search data."],
+      ["Hashtags", "Keep suggestions specific and relevant to the video."],
+      ["Thumbnails", "Check contrast, focus, and readability at a small size."],
+      ["Upload optimization", "Review playback, captions, rights, settings, and links."],
+      ["Channel growth", "Plan repeatable formats around viewer questions."],
+      ["Analytics", "Use your own Studio data and compare like-for-like periods."],
+      ["Monetization", "Check your account’s eligibility and current official requirements."],
+      ["Content ideas", "Turn one topic into tutorials, mistakes, comparisons, and stories."]
+    ];
+
+const TOOL_META = {
+      titles: ["Title idea studio", "Turn a topic into five editable title directions."],
+      description: ["Description builder", "Start with a useful summary, then customize the details."],
+      keywords: ["Keywords & hashtags", "Related phrase ideas—not search-volume or competition data."],
+      ideas: ["Content idea lab", "Explore useful formats around one topic."],
+      checklist: ["Upload checklist", "A final editorial check before you publish."]
+    };
+
+const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[char]));
+
+function safeMediaUrl(value) {
+      if (!value) return "";
+      try {
+        const url = new URL(value, window.location.href);
+        return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+      } catch {
+        return "";
+      }
+    }
+
+function toast(message) {
+      const element = document.createElement("div");
+      element.className = "toast";
+      element.textContent = message;
+      $("#toasts").append(element);
+      setTimeout(() => element.remove(), 4800);
+    }
+
+async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        toast("Copied to clipboard.");
+      } catch {
+        toast("Clipboard unavailable. Select the result and copy it manually.");
+      }
+    }
+
+/* Content rendering */
+    function renderContent() {
+      $("#about-copy").textContent = SITE.about;
+      $("#year").textContent = new Date().getFullYear();
+
+$("#services-grid").innerHTML = SITE.services.map((service, index) => `
+        <article class="glass card service-card lift reveal">
+          <span class="service-icon" aria-hidden="true">${escapeHTML(service.icon)}</span>
+          <h3>${escapeHTML(service.title)}</h3>
+          <p>${escapeHTML(service.description)}</p>
+          <a href="#hire" class="link" data-service="${index}">Let’s create this ↗</a>
+        </article>
+      `).join("");
+
+SITE.services.forEach(service => {
+        $("#client-service").add(new Option(service.title, service.title));
+      });
+      $("#client-service").add(new Option("Multiple services / custom project", "Custom project"));
+
+$("#resource-grid").innerHTML = RESOURCES.map(([title, text]) => `
+        <article class="glass resource lift reveal">
+          <strong>${escapeHTML(title)}</strong><p>${escapeHTML(text)}</p>
+        </article>
+      `).join("");
+
+$("#pricing-grid").innerHTML = SITE.packages.map((plan, index) => `
+        <article class="glass price-card ${plan.featured ? "featured" : ""} reveal">
+          ${plan.featured ? '<span class="price-label">THE CREATOR PACKAGE</span>' : ""}
+          <span class="eyebrow">${escapeHTML(plan.name)}</span>
+          <h3 class="price">${escapeHTML(plan.price)}</h3>
+          <p>${escapeHTML(plan.note)}</p>
+          <ul class="feature-list">
+            ${plan.features.map(feature => `<li>${escapeHTML(feature)}</li>`).join("")}
+          </ul>
+          <a href="#hire" class="btn ${plan.featured ? "btn-primary" : ""}" data-package="${index}">
+            Discuss ${escapeHTML(plan.name)} ↗
+          </a>
+        </article>
+      `).join("");
+
+if (SITE.reviews.length) {
+        $("#reviews-grid").innerHTML = SITE.reviews.map(review => `
+          <article class="glass card review reveal">
+            <div class="review-quote" aria-hidden="true">“</div>
+            <blockquote style="margin:10px 0 20px"><p>${escapeHTML(review.quote)}</p></blockquote>
+            <strong>${escapeHTML(review.name)}</strong>
+            <div class="muted"><small>${escapeHTML(review.role || "")}</small></div>
+          </article>
+        `).join("");
+      } else {
+        $("#reviews-grid").innerHTML = `
+          <div class="glass card reveal" style="grid-column:1/-1">
+            <span class="pill">A space for genuine feedback</span>
+            <h3 style="margin-top:20px">Client stories will appear here.</h3>
+            <p>No testimonials have been published yet. In the meantime, discuss your brief,
+            request relevant work samples, and agree on clear deliverables before starting.</p>
+            <a class="link" href="#hire">Talk about your project ↗</a>
+          </div>
+        `;
+      }
+
+$("#faq-list").innerHTML = SITE.faqs.map(faq => `
+        <details><summary>${escapeHTML(faq.q)}</summary><p>${escapeHTML(faq.a)}</p></details>
+      `).join("");
+
+$("#footer-links").innerHTML = SECTIONS.map(([id, label]) =>
+        `<a href="#${id}">${escapeHTML(label)}</a>`
+      ).join("");
+
+const phoneDigits = SITE.phone.replace(/\D/g, "");
+      const countryDigits = SITE.countryCode.replace(/\D/g, "");
+      const international = `${countryDigits}${phoneDigits}`;
+      const contactLinks = {
+        phone: `tel:+${international}`,
+        email: `mailto:${SITE.email}`,
+        whatsapp: `https://wa.me/${international}?text=${encodeURIComponent(
+          "Hi Aqeel! I’d like to discuss a video editing project."
+        )}`
+      };
+
+$$("[data-contact]").forEach(link => {
+        link.href = contactLinks[link.dataset.contact];
+      });
+      $("#contact-email").textContent = SITE.email;
+      $("#contact-phone").textContent = `+${countryDigits} ${SITE.phone}`;
+
+if (SITE.formEndpoint) {
+        $("#hire-submit .btn-label").textContent = "Send project enquiry ↗";
+        $("#form-method").textContent = "Sends to the configured enquiry service.";
+      }
+    }
+
+/* Portfolio */
+    function artMarkup(project, index, extraClass = "") {
+      const imageUrl = safeMediaUrl(project.imageUrl);
+      if (imageUrl) {
+        return `<img class="${extraClass}" src="${escapeHTML(imageUrl)}"
+          alt="${escapeHTML(project.title)}" loading="lazy" decoding="async"
+          style="width:100%;height:100%;aspect-ratio:16/10;object-fit:cover">`;
+      }
+      return `<div class="project-art artwork variant-${index % 4} ${extraClass}">
+        <strong>${escapeHTML(project.headline)}</strong>
+      </div>`;
+    }
+
+function renderPortfolio(filter = "all") {
+      $("#portfolio-grid").innerHTML = SITE.portfolio
+        .map((project, index) => ({ project, index }))
+        .filter(({ project }) => filter === "all" || project.category === filter)
+        .map(({ project, index }) => `
+          <article class="glass project lift reveal">
+            <button class="project-cover" data-project="${index}" aria-label="Preview ${escapeHTML(project.title)}">
+              ${artMarkup(project, index)}
+              <span class="pill project-badge">${project.demo ? "DEMO CONCEPT" : "PROJECT"}</span>
+              <span class="play" aria-hidden="true">${project.category === "video" ? "▷" : "↗"}</span>
+            </button>
+            <div class="project-info">
+              <small class="accent">${escapeHTML(project.tag)}</small>
+              <h3>${escapeHTML(project.title)}</h3>
+              <p>${escapeHTML(project.description)}</p>
+            </div>
+          </article>
+        `).join("");
+
+observeReveals();
+    }
+
+function openProject(index) {
+      const project = SITE.portfolio[index];
+      if (!project) return;
+      $("#project-title").textContent = project.title;
+
+let media;
+      const videoUrl = safeMediaUrl(project.videoUrl);
+
+if (project.category === "comparison") {
+        media = `
+          <div class="compare">
+            ${artMarkup(project, index)}
+            ${artMarkup(project, index, "compare-before")}
+            <div class="compare-labels"><span>Before treatment</span><span>After treatment</span></div>
+          </div>
+          <label for="comparison-range" style="margin-top:15px">Drag to compare the illustrative treatments</label>
+          <input id="comparison-range" type="range" min="0" max="100" value="50"
+            aria-label="Percentage of before treatment shown">
+        `;
+      } else if (videoUrl) {
+        media = `<video controls playsinline preload="metadata">
+          <source src="${escapeHTML(videoUrl)}">
+          Your browser does not support this video format.
+        </video>`;
+      } else {
+        media = artMarkup(project, index);
+      }
+
+$("#project-detail").innerHTML = `
+        <div class="dialog-media">${media}</div>
+        <span class="pill">${project.demo ? "Illustrative concept · Not client work" : escapeHTML(project.tag)}</span>
+        <p style="margin-top:18px">${escapeHTML(project.details)}</p>
+        <p><strong>Scope:</strong> ${escapeHTML(project.deliverables)}</p>
+        ${project.category === "video" && !videoUrl ?
+          '<p class="notice">No video file has been added yet. This preview is illustrative artwork, not playable footage.</p>' : ""}
+        <a href="#hire" class="btn btn-primary" id="project-hire">Discuss a similar direction ↗</a>
+      `;
+
+const slider = $("#comparison-range");
+      if (slider) {
+        slider.addEventListener("input", () => {
+          $(".compare-before").style.clipPath = `inset(0 ${100 - Number(slider.value)}% 0 0)`;
+        });
+      }
+
+$("#project-hire").addEventListener("click", () => $("#project-dialog").close());
+      $("#project-dialog").showModal();
+    }
+
+$("#project-dialog").addEventListener("close", () => {
+      const video = $("#project-dialog video");
+      if (video) video.pause();
+    });
+
+/* Motion and water-drop ripples */
+    const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
+    let revealObserver;
+
+function observeReveals() {
+      if (!("IntersectionObserver" in window) || motionQuery.matches) {
+        $$(".reveal").forEach(element => element.classList.add("visible"));
+        return;
+      }
+      document.documentElement.classList.add("motion");
+      if (!revealObserver) {
+        revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .08 });
+      }
+      $$(".reveal:not(.visible)").forEach(element => revealObserver.observe(element));
+    }
+
+function rippleAt(x, y) {
+      if (motionQuery.matches) return;
+      const ripple = document.createElement("span");
+      ripple.className = "water-ripple";
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      ripple.setAttribute("aria-hidden", "true");
+
+// Keep dialog ripples inside the browser's top layer.
+      (document.querySelector("dialog[open]") || document.body).append(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove(), { once: true });
+    }
+
+document.addEventListener("pointerdown", event => {
+      if (event.button !== 0) return;
+      rippleAt(event.clientX, event.clientY);
+    }, { passive: true });
+
+document.addEventListener("click", event => {
+      if (event.detail === 0 && event.target.closest("button,a,summary")) {
+        const rect = event.target.getBoundingClientRect();
+        rippleAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      }
+    });
+
+/* Navigation, theme, dialogs */
+    $("#menu-toggle").addEventListener("click", () => {
+      const open = $("#navigation").classList.toggle("open");
+      $("#menu-toggle").setAttribute("aria-expanded", String(open));
+      $("#menu-toggle").textContent = open ? "×" : "☰";
+    });
+
+function closeMenu() {
+      $("#navigation").classList.remove("open");
+      $("#menu-toggle").setAttribute("aria-expanded", "false");
+      $("#menu-toggle").textContent = "☰";
+    }
+
+function updateThemeButton() {
+      const dark = document.documentElement.dataset.theme === "dark";
+      $("#theme-toggle").textContent = dark ? "☀" : "☾";
+      $("#theme-toggle").setAttribute("aria-label", `Switch to ${dark ? "light" : "dark"} mode`);
+      $('meta[name="theme-color"]').content = dark ? "#17111d" : "#fff1f7";
+    }
+
+$("#theme-toggle").addEventListener("click", () => {
+      const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem("aqeel-theme", next); } catch {}
+      updateThemeButton();
+    });
+
+document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+document.addEventListener("click", event => {
+      const closeButton = event.target.closest("[data-close]");
+      if (closeButton) document.getElementById(closeButton.dataset.close).close();
+
+if (event.target.closest("#navigation a")) closeMenu();
+
+const filterButton = event.target.closest("[data-filter]");
+      if (filterButton) {
+        $$("[data-filter]").forEach(button =>
+          button.setAttribute("aria-pressed", String(button === filterButton))
+        );
+        renderPortfolio(filterButton.dataset.filter);
+      }
+
+const projectButton = event.target.closest("[data-project]");
+      if (projectButton) openProject(Number(projectButton.dataset.project));
+
+const serviceLink = event.target.closest("[data-service]");
+      if (serviceLink) {
+        $("#client-service").value = SITE.services[Number(serviceLink.dataset.service)].title;
+      }
+
+const packageLink = event.target.closest("[data-package]");
+      if (packageLink) {
+        const plan = SITE.packages[Number(packageLink.dataset.package)];
+        $("#client-service").value = "Custom project";
+        const textarea = $("#client-details");
+        const line = `Interested in the ${plan.name} package.`;
+        if (!textarea.value.includes(line)) {
+          textarea.value = `${line}\n${textarea.value}`.trim();
+        }
+        toast(`${plan.name} package added to your brief.`);
+      }
+    });
+
+/* Local site search */
+    function renderSearch(query = "") {
+      const records = [
+        ...SECTIONS.map(([id, label]) => ({ label, id })),
+        ...SITE.services.map(service => ({ label: service.title, id: "services" })),
+        ...RESOURCES.map(([label]) => ({ label, id: "toolkit" })),
+        ...SITE.portfolio.map(project => ({ label: project.title, id: "portfolio" }))
+      ];
+      const normalized = query.trim().toLocaleLowerCase();
+      const terms = normalized.split(/\s+/).filter(Boolean);
+      const matches = records.filter(item =>
+        terms.every(term => item.label.toLocaleLowerCase().includes(term))
+      ).slice(0, 14);
+
+const results = $("#search-results");
+      results.replaceChildren();
+
+if (!matches.length) {
+        const p = document.createElement("p");
+        p.textContent = "No matches. Try services, video, pricing, or contact.";
+        results.append(p);
+        return;
+      }
+
+matches.forEach(item => {
+        const link = document.createElement("a");
+        link.className = "search-result";
+        link.href = `#${item.id}`;
+        link.textContent = `${item.label} ↗`;
+        link.addEventListener("click", () => $("#search-dialog").close());
+        results.append(link);
+      });
+    }
+
+$("#search-open").addEventListener("click", () => {
+      renderSearch();
+      $("#site-search").value = "";
+      $("#search-dialog").showModal();
+      $("#site-search").focus();
+    });
+
+$("#site-search").addEventListener("input", event => renderSearch(event.target.value));
+
+/* Template-based creator tools. User input is rendered as text. */
+    let activeTool = "titles";
+    let hasGeneratedResult = false;
+
+$$(".tool-tab").forEach(button => {
+      button.addEventListener("click", () => {
+        activeTool = button.dataset.tool;
+        $$(".tool-tab").forEach(tab =>
+          tab.setAttribute("aria-pressed", String(tab === button))
+        );
+        $("#tool-title").textContent = TOOL_META[activeTool][0];
+        $("#tool-description").textContent = TOOL_META[activeTool][1];
+        $("#creator-output").textContent = "Add a topic, then create your starting point.";
+        hasGeneratedResult = false;
+      });
+    });
+
+function generateToolResult(tool, topic, audience) {
+      const viewer = audience || "your audience";
+      const words = topic.toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+      const hashtag = words.slice(0, 5).join("");
+
+const outputs = {
+        titles: [
+          `1. ${topic}: A Practical Starting Point`,
+          `2. How to Get Started with ${topic}`,
+          `3. ${topic}: Common Mistakes to Avoid`,
+          `4. A Step-by-Step Guide to ${topic}`,
+          `5. What I Learned About ${topic}`,
+          "",
+          `Audience: ${viewer}`,
+          "Choose only a title your actual video supports. Personal-experience titles require genuine experience."
+        ].join("\n"),
+
+description: [
+          `Explore ${topic} in this video for ${viewer}.`,
+          "",
+          "In this video:",
+          "• [Add the first topic you actually cover]",
+          "• [Add a useful example or demonstration]",
+          "• [Add the takeaway viewers can apply]",
+          "",
+          "Chapters: [Add accurate timestamps after the final edit]",
+          "Resources: [Add relevant, verified links]",
+          "Credits / disclosures: [Add licenses, sponsorships, or affiliate disclosures if applicable]",
+          "",
+          `What would you like to know next about ${topic}?`,
+          "",
+          "Replace every bracketed placeholder before publishing."
+        ].join("\n"),
+
+keywords: [
+          "RELATED PHRASE IDEAS",
+          topic,
+          `${topic} tutorial`,
+          `${topic} step by step`,
+          `${topic} tips`,
+          `${topic} examples`,
+          "",
+          "HASHTAG STARTING POINTS",
+          hashtag ? `#${hashtag}` : "#YourTopic",
+          "#Tutorial",
+          "#HowTo",
+          "",
+          "Use only relevant suggestions. These are text templates, not verified search demand, ranking difficulty, or tag-performance data."
+        ].join("\n"),
+
+ideas: [
+          `1. A beginner-friendly walkthrough of ${topic}.`,
+          `2. A real mistake you made while learning ${topic}, and what changed.`,
+          `3. A side-by-side comparison of two approaches to ${topic}.`,
+          `4. A behind-the-scenes look at your ${topic} workflow.`,
+          `5. Answer questions ${viewer} ask about ${topic}.`,
+          `6. Turn one useful tip into a short-form demonstration.`,
+          "",
+          "Use real examples. Avoid invented experiments, results, or personal stories."
+        ].join("\n"),
+
+checklist: [
+          `UPLOAD REVIEW: ${topic}`,
+          "",
+          "□ The video delivers on the title and thumbnail.",
+          "□ The opening makes the subject and value clear.",
+          "□ Dialogue is understandable and audio is balanced.",
+          "□ Captions and on-screen text are accurate.",
+          "□ Music, footage, images, and fonts are appropriately licensed.",
+          "□ Description links and any chapter timestamps are correct.",
+          "□ Relevant disclosures and audience settings are reviewed.",
+          "□ End elements and publishing settings are checked where applicable.",
+          "□ The final export has been watched on mobile and desktop.",
+          "□ No private information appears in the video or shared links.",
+          "",
+          "Review current requirements in your own YouTube account before publishing."
+        ].join("\n")
+      };
+      return outputs[tool];
+    }
+
+$("#creator-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const topicInput = $("#creator-topic");
+      const topic = topicInput.value.trim();
+      const audience = $("#creator-audience").value.trim();
+
+if (!topic) {
+        topicInput.setCustomValidity("Enter a topic, not just spaces.");
+        topicInput.reportValidity();
+        return;
+      }
+
+$("#creator-output").textContent = generateToolResult(activeTool, topic, audience);
+      hasGeneratedResult = true;
+      toast("Your editable starting point is ready.");
+    });
+
+$("#creator-topic").addEventListener("input", event => event.target.setCustomValidity(""));
+
+$("#copy-output").addEventListener("click", () => {
+      if (!hasGeneratedResult) return toast("Generate a result first.");
+      copyText($("#creator-output").textContent);
+    });
+
+/* Safe YouTube URL parsing. No network extraction or downloads. */
+    function parseYouTubeUrl(value) {
+      let url;
+      try { url = new URL(value); } catch { return null; }
+      if (!["https:", "http:"].includes(url.protocol)) return null;
+      if (url.username || url.password || url.port) return null;
+
+const host = url.hostname.toLowerCase();
+      const parts = url.pathname.split("/").filter(Boolean);
+      let videoId = "";
+
+if (host === "youtu.be" && parts.length === 1) {
+        videoId = parts[0];
+      } else if (["youtube.com", "www.youtube.com", "m.youtube.com"].includes(host)) {
+        if (url.pathname === "/watch") {
+          videoId = url.searchParams.get("v") || "";
+        } else if (["shorts", "live", "embed"].includes(parts[0]) && parts.length === 2) {
+          videoId = parts[1];
+        }
+      }
+
+return /^[A-Za-z0-9_-]{11}$/.test(videoId) ? videoId : null;
+    }
+
+$("#youtube-url").addEventListener("input", event => {
+      event.target.setCustomValidity("");
+      $("#youtube-result").hidden = true;
+      $("#youtube-status").textContent = "";
+    });
+
+$("#youtube-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const input = $("#youtube-url");
+      const id = parseYouTubeUrl(input.value.trim());
+      $("#youtube-result").hidden = true;
+
+if (!id) {
+        input.setCustomValidity("Enter a supported YouTube video URL with a valid 11-character video ID.");
+        input.reportValidity();
+        $("#youtube-status").textContent = "This is not a supported YouTube video link.";
+        return;
+      }
+
+input.setCustomValidity("");
+      $("#validated-video").href = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
+      $("#youtube-result").hidden = false;
+      $("#youtube-status").textContent = "Link format checked locally. No video was downloaded.";
+      toast("Link format validated.");
+    });
+
+/* Enquiry form */
+    const localToday = new Date();
+    const localDate = [
+      localToday.getFullYear(),
+      String(localToday.getMonth() + 1).padStart(2, "0"),
+      String(localToday.getDate()).padStart(2, "0")
+    ].join("-");
+    $("#client-deadline").min = localDate;
+
+$$("#hire-form input, #hire-form textarea").forEach(input => {
+      input.addEventListener("input", () => input.setCustomValidity(""));
+    });
+
+function validateEnquiry(form) {
+      const name = $("#client-name");
+      const details = $("#client-details");
+      const phone = $("#client-phone");
+      const link = $("#client-link");
+
+if (!name.value.trim()) name.setCustomValidity("Please enter your name.");
+      if (details.value.trim().length < 20) {
+        details.setCustomValidity("Please add at least 20 characters about your project.");
+      }
+      if (phone.value.trim()) {
+        const digits = phone.value.replace(/\D/g, "");
+        if (!/^[+\d\s().-]+$/.test(phone.value) || digits.length < 7 || digits.length > 15) {
+          phone.setCustomValidity("Enter a phone number containing 7–15 digits.");
+        }
+      }
+      if (link.value.trim()) {
+        try {
+          const url = new URL(link.value);
+          if (!["https:", "http:"].includes(url.protocol) || url.username || url.password) {
+            throw new Error("Invalid link");
+          }
+        } catch {
+          link.setCustomValidity("Use an HTTP or HTTPS file/reference link without embedded credentials.");
+        }
+      }
+      return form.reportValidity();
+    }
+
+$("#hire-form").addEventListener("submit", async event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      if (!validateEnquiry(form)) return;
+
+const data = Object.fromEntries(new FormData(form).entries());
+      for (const key of Object.keys(data)) {
+        if (typeof data[key] === "string") data[key] = data[key].trim();
+      }
+      const button = $("#hire-submit");
+      const status = $("#hire-status");
+
+if (!SITE.formEndpoint) {
+        const body = [
+          `Hello ${SITE.name},`,
+          "",
+          "I’d like to discuss a project.",
+          "",
+          `Name: ${data.name}`,
+          `Email: ${data.email}`,
+          `Phone / WhatsApp: ${data.phone || "Not provided"}`,
+          `Service: ${data.service}`,
+          `Budget: ${data.budget || "To discuss"}`,
+          `Preferred deadline: ${data.deadline || "To discuss"}`,
+          `File / reference link: ${data.link || "Not provided"}`,
+          "",
+          "Project details:",
+          data.details,
+          "",
+          "I agree to be contacted about this enquiry."
+        ].join("\n");
+
+const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(
+          `Project enquiry — ${data.service}`
+        )}&body=${encodeURIComponent(body)}`;
+
+status.textContent =
+          "Your enquiry is prepared, not sent. Review and send it in your email app. " +
+          "If no app opens, copy the brief below and email it directly.";
+
+let fallback = $("#email-fallback");
+        if (!fallback) {
+          fallback = document.createElement("div");
+          fallback.id = "email-fallback";
+          fallback.className = "notice";
+
+const label = document.createElement("label");
+          label.htmlFor = "email-brief";
+          label.textContent = "Prepared email brief";
+
+const textarea = document.createElement("textarea");
+          textarea.id = "email-brief";
+          textarea.readOnly = true;
+          textarea.rows = 8;
+
+const copy = document.createElement("button");
+          copy.type = "button";
+          copy.className = "btn";
+          copy.style.marginTop = "12px";
+          copy.textContent = "Copy enquiry";
+          copy.addEventListener("click", () => copyText($("#email-brief").value));
+
+fallback.append(label, textarea, copy);
+          form.append(fallback);
+        }
+
+$("#email-brief").value = body;
+        toast("Email draft prepared. Nothing has been sent.");
+        window.location.href = mailto;
+        return;
+      }
+
+button.disabled = true;
+      button.classList.add("loading");
+      status.textContent = "Sending your enquiry…";
+
+const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 15000);
+
+try {
+        const endpoint = new URL(SITE.formEndpoint, window.location.href);
+        if (endpoint.protocol !== "https:" && endpoint.hostname !== "localhost") {
+          throw new Error("Enquiry endpoint must use HTTPS.");
+        }
+
+const response = await fetch(endpoint.href, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(data),
+          signal: controller.signal,
+          credentials: "omit",
+          referrerPolicy: "no-referrer"
+        });
+
+const result = await response.json().catch(() => null);
+        if (!response.ok || result?.ok !== true) throw new Error("Unconfirmed delivery");
+
+status.textContent = "Your enquiry was received by the configured service. This is not a booking confirmation.";
+        toast("Project enquiry received.");
+        form.reset();
+      } catch {
+        status.textContent =
+          `Delivery could not be confirmed. Your details remain in the form. ` +
+          `Please contact ${SITE.email} to confirm receipt before resending.`;
+        toast("Enquiry delivery could not be confirmed.");
+      } finally {
+        clearTimeout(timer);
+        button.disabled = false;
+        button.classList.remove("loading");
+      }
+    });
+
+/* Initialize */
+    renderContent();
+    renderPortfolio();
+    updateThemeButton();
+    observeReveals();
+  </script>
+</body>
+</html>
